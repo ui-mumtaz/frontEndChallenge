@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo" ng-controller="control">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Demo AngularJs</title>
+	<link rel="stylesheet" type="text/css" href="css/flatly.css">
+	<link rel="stylesheet" type="text/css" href="css/ngDialog.min.css">
+	<link rel="stylesheet" type="text/css" href="css/ngDialog-theme-default.css">
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+</head>
+
+<body>
+
+	<div class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="#" class="navbar-brand">Demo AngularJs</a>
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="navbar-main">
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="#" ng-click="create()">
+							<i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i> Create</a>
+					</li>
+				</ul>
+
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="search" placeholder="Search">
+					</div>
+				</form>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#" ng-click="detailApi()">
+							<i class="fa fa-terminal fa-lg" aria-hidden="true"></i> Detail API </a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="carga" ng-show="loading">loading...</div>
+		<div ng-show="!loading && posts.length<=0"> No Result Found</div>
+		<div class="row" ng-show="posts.length > 0" class="animated">
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="post in posts|filter:search">
+					<div class="pull-right">
+						<a href="#" ng-click="detallesReg(post.id)" class="btn btn-success btn-xs">
+							<i class="fa fa-search" aria-hidden="true"></i>
+						</a>
+						<a href="#" ng-click="edit(post)" class="btn btn-success btn-xs">
+							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+						</a>
+						<a href="#" class="btn btn-success btn-xs">
+							<i class="fa fa-trash" aria-hidden="true"></i>
+						</a>
+					</div>
+					<div ng-bind="{{post.title}}">{{post.title}}</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Create-->
+	<script type="text/ng-template" id="create">
+		<form name='form1' novalidate>
+	        <div class="ngdialog-message">
+	            <strong><p>Create</p></strong>
+					<input type="text" name="title" ng-model="newPost.title" 
+					class="form-control inp_f" 
+					ng-class='{ error: form1.title.$invalid && !form1.$pristine }'
+					placeholder="title" required >
+					<textarea class="form-control" rows="6" id="textArea" placeholder="text" ng-model="newPost.body"></textarea>	
+					<center>{{resultado | json}}</center>	            
+			</div>
+			<div class="ngdialog-buttons">
+				<button class="inline close-this-dialog ngdialog-button btn-success" ng-click="closeThisDialog()">Close</button>
+				<input type="submit" value="Save" ng-click="addPost()" ng-disabled='!form1.$valid' 
+				class="ngdialog-button btn-primary">
+			</div>
+		</form>	
+    </script>
+	<!-- Create-->
+
+	<!-- Edit Row-->
+	<script type="text/ng-template" id="editRow">
+		<form name='form1' novalidate>
+	        <div class="ngdialog-message">
+	            <strong><p>Edit Row</p></strong>
+					<input type="text" name="NroDeclaracion" ng-model="post_r.title" 
+					class="form-control inp_f" 
+					ng-class='{ error: form1.NroDeclaracion.$invalid && !form1.$pristine }'
+					placeholder="Titulo"  required >
+					<textarea class="form-control" ng-model="post_r.body" rows="6" id="textArea" placeholder="Mensaje"></textarea>	
+					<center>{{resultado | json}}</center>	            
+			</div>
+			<div class="ngdialog-buttons">
+				<button class="inline close-this-dialog ngdialog-button btn-success" ng-click="closeThisDialog()">Close</button>
+				<input type="submit" value="Save" ng-click="addPost()" ng-disabled='!form1.$valid' 
+				class="ngdialog-button btn-primary">
+			</div>
+		</form>	
+    </script>
+	<!-- Edit Row-->
+
+	<!-- Detail Row-->
+	<script type="text/ng-template" id="detailRow">
+        <div class="ngdialog-message">
+            <h4>Details Row</h4>
+				<div class="titulo">{{resul_ind.title}}</div>		
+				<div class="msj">{{resul_ind.body}}</div>
+		</div>
+		<div class="ngdialog-buttons">
+			<button class="inline close-this-dialog ngdialog-button btn-success" ng-click="closeThisDialog()">Close</button>
+		</div>
+    </script>
+	<!-- detail row-->
+
+	<!-- Details API-->
+	<script type="text/ng-template" id="detailAPI">
+		<form name='form1' novalidate>
+	        <div class="ngdialog-message">					            
+				<strong><p>Detail API <i class="fa fa-cogs fa-lg" aria-hidden="true"></i></p></strong>
+				<ul>
+					<li>AngularJs 1.6.4 -> <a href="" target="_blank"> https://angularjs.org/</a></li>
+					<li>JSON -> <a href="https://jsonplaceholder.typicode.com" target="_blank">https://jsonplaceholder.typicode.com</a></li>
+					<li>ngDialog  -> <a href="http://likeastore.github.io/ngDialog/" target="_blank"> http://likeastore.github.io/ngDialog/</a></li>
+					<li>Theme -> <a href="https://bootswatch.com/cosmo/" target="_blank">https://bootswatch.com/cosmo/</a></li>
+					<li>@Mumtaz Ahmad</li>
+				</ul>		            
+			</div>
+			<div class="ngdialog-buttons">
+				<button class="inline close-this-dialog ngdialog-button btn-success" ng-click="closeThisDialog()">Close</button>
+			</div>
+		</form>	
+    </script>
+	<!-- Details API-->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script scr="https://code.angularjs.org/1.6.4/angular-animate.min.js"></script>
+	<script src="https://use.fontawesome.com/7486dafb2d.js"></script>
+	<script src="js/ngDialog.min.js"></script>
+	<script src="js/controlador.js"></script>
+</body>
+
+</html>
