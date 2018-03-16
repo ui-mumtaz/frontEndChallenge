@@ -1,0 +1,34 @@
+ 	 
+//	AllUsersService.getAllUsers().then(function () {
+//			 $scope.users = AllUsersService.users;  
+//			 debugger;
+//     });
+//	if (JSON.parse($window.sessionStorage.getItem('userIsLoggedIn'))) {
+//		if (JSON.parse($window.sessionStorage.getItem('userIsLoggedIn')).userIsLoggedIn === true) {
+//			$rootScope.userIsLoggedIn= true; 
+//		} else {
+//			$rootScope.userIsLoggedIn= false; 
+//		}
+//	}
+
+ var userIsLoggedIn= {"userIsLoggedIn": true}
+		if (JSON.parse($window.sessionStorage.getItem('userIsLoggedIn'))) {
+			$window.sessionStorage.clear();
+		} else {
+			$window.sessionStorage.setItem('userIsLoggedIn', JSON.stringify(userIsLoggedIn));
+		}
+
+
+ 			if (JSON.parse($window.sessionStorage.getItem('user'))) {
+ 				$window.sessionStorage.clear();
+  } else {
+ 			 $window.sessionStorage.setItem('user', JSON.stringify($scope.editRecord));
+  }
+
+
+ <button  id="post_save_id{{$index}}"   class="btn btn-success btn-xs"
+	 
+		  ng-click="saveRecord()"> 
+		 {{title}} <span class="glyphicon glyphicon-ok"></span>
+ </button> 
+ 
