@@ -1,0 +1,39 @@
+<div class="container">
+	<form name="AlbumsForm" class="form-horizontal"  novalidate> 
+		&nbsp; 
+		<h2>Your albums</h2>   
+		<div class="panel-group"> 
+			<div  class="panel panel-success">  
+				<div class="panel-heading"> 
+					<div class="panel-body"> 
+						<button  id="album_id{{$index}}"   class="btn btn-info btn-xs"  
+								 ui-sref="root.album({mode:'new'})"> 
+							Create Album <span class="glyphicon glyphicon-plus"></span>
+						</button>
+						<table class="table table-hover">
+							<thead> 
+							<th class="col-md-3"> </th> 
+							<th> Title </th>  
+							</thead> 
+							<tbody> 
+								<tr ng-repeat="album in albums">
+									<td>   
+							<button-delete pk="{{album.id}}" name="albums" array="albums"> </button-delete>
+							<button class="btn btn-success btn-xs" 
+									ui-sref="root.album({mode:'edit', albumId: album.id})">
+								<span class='glyphicon glyphicon-edit'> </span> 
+							</button> 
+							</td> 
+							<td> {{album.title}}  </td>  
+							</tr> 
+							</tbody>  
+						</table>
+					</div>
+				</div> 
+			</div> 
+		</div>
+	</form> 
+</div>
+
+
+

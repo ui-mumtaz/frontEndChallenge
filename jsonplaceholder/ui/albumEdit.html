@@ -1,0 +1,63 @@
+<div    class="container">
+	<form name="AlbumsForm" class="form-horizontal"  novalidate> 
+		&nbsp;    
+		<h2> {{albumTitle}} </h2>  
+		<div class="col-sm-12">   
+			<div class="panel panel-success">
+				<div class="panel-heading"> 
+					<textarea ng-disabled="!submitAlbum" class="col-sm-12 text-muted "   id="titleId"  rows="1" type='text' ng-model='editRecord.title'></textarea>
+					<br> 
+				</div> 
+			</div> 
+			<div class="pull-right" ng-show="submitAlbum" >
+				<button-save  name="albums" title="Submit Album"   > </button-save> 
+			</div>
+		</div> 
+
+		<!-- existing photos -->
+		<br><br>
+		<div  ng-hide="submitAlbum" class="col-md-12">
+			<div class="panel panel-success">
+				<div class="panel-heading"> 
+					<strong> Photos </strong>
+				</div> 
+				<div  class="panel-body panel-success"> 
+					<div ng-repeat="photo in photos" >
+						<div class="col-sm-1 thumbnail">  
+							<button-delete class="pull-right" pk="{{photo.id}}" name="photos" array="photos" icon type> </button-delete>
+							<a href="{{photo.url}}"><img title="{{$index}}"  src="{{photo.url}}" alt="{{photo.title}}" class="img-responsive"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+
+		<!-- new photo -->
+		<div ng-hide="submitAlbum">
+			<div class="col-sm-12">   
+				<div class="panel panel-success">
+					<div class="panel-heading"> 
+						<strong > Add Photo </strong> 
+					</div>
+					<div  class="panel-body panel-success"> 
+						<label>   </label>
+						<input class=" col-md-8 text-muted "   id="titleId" placeholder="Place a title for the photo"  type='text'  ng-model='photo.title'/> 
+						<br>
+						<label>     </label>
+						<input class="  col-md-8 text-muted " name="url"   id="urlId"
+							   type="url"
+							   placeholder="http://" type='text'  ng-model='photo.url'/> 
+						<p  class="col-md-12" style="color: red" ng-show=" AlbumsForm.url.$error.url"  ng-hide="!AlbumsForm.$dirty && AlbumsForm.$pristine && !AlbumsForm.$submitted"> You have error in the url you have provided</p>
+					</div>
+				</div>  
+			</div>
+			<div class="pull-right">
+				<button  id="photo_save_id{{$index}}"   class="btn btn-success btn-xs"  
+						 ng-click="submitPhoto()">  <span class="glyphicon glyphicon-ok"></span>
+					Submit Photo  
+				</button>   
+			</div> 
+		</div> 
+		<br> <br> <br> 
+	</form>
+</div> 

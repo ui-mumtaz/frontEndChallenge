@@ -1,0 +1,29 @@
+<div ng-controller="todoEditController">
+	<div class="modal-header">
+
+		<h4 class="modal-title"> To Do </h4>
+	</div>
+	<div class="modal-body row">  
+		<div class="form-group col-md-12">
+			<label class="col-md-1"> Title </label> 
+			<textarea  class="col-md-11" id="titleId"  rows="3" type='text' ng-model='editRecord.title'></textarea>
+		</div>
+		<div class="form-group col-md-12">
+			<label class="col-md-1">Status</label> 
+			<select id="loginUserId"  type="text"  ng-model="editRecord.completed"   
+					ng-options="i.completed as (i.completed) for i in status"  
+					allow-single-deselect="true" class="col-md-6"   > 
+				<option value="">    Please Choose status  </option>
+			</select>
+		</div>  
+	</div>
+	 
+		<div class="modal-footer"> 
+			<button class="btn btn-warning btn-xs" ng-click="closeToDo(false)"> Do not save
+				<span class="glyphicon glyphicon-remove"></span>
+			</button> 
+			&nbsp;&nbsp;
+			<!--<button class="btn btn-danger" ng-click="okEdit(true)"> Yes</button>--> 
+			<button-save  name="todos" title="Save To Do"   > </button-save>
+	</div>
+</div>

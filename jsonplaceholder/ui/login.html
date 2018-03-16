@@ -1,0 +1,15 @@
+<div class="container col-md-offset-3 col-md-6 text-center">
+  
+		<h2> Please Select the user to Log in</h2>  
+		<div style='margin: auto;    border: 3px solid wheat; padding: 10px;'> 
+			<select id="loginUserId" ng-required="true" type="text"  ng-model="editRecord.userId"   
+			 ng-options="i.id as (i.username+ ' (' + i.name + ') ') for i in users"  
+			 allow-single-deselect="true" class="col-md-offset-3 col-md-6"   > 
+				<option value="">    Please Choose a Username  </option>
+			</select>
+			 <p class="b-b">&nbsp;</p> 
+			  <button style='width:50%' class="btn btn-sm btn-success" ng-disabled="!editRecord.userId"   ng-click="logIn()">
+				      <span  style="font-size: 150%;">Sign in </span> 
+			  </button> 
+		</div>
+</div>

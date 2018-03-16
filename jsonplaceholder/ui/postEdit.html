@@ -1,0 +1,59 @@
+<div class="container">
+	<form name="postEditForm" class="form-horizontal"  novalidate>
+		<h2> {{postTitle}} </h2>  
+		<!-- existing  post-->
+		<div class="col-sm-12">
+			<div class="panel panel-success">
+				<div class="panel-heading"> 
+					<textarea ng-disabled="showCommentReplySection" class="col-sm-12 text-muted "   id="titleId"  rows="1" type='text' ng-model='editRecord.title'></textarea>
+					<br><br> 
+				</div>
+				<div class="panel-body">
+					<textarea ng-disabled="showCommentReplySection" class="col-sm-12 text-muted "   id="titleId"  rows="5" type='text' ng-model='editRecord.body'></textarea>
+				</div>  
+			</div> 
+			<div class="pull-right" ng-hide="showCommentReplySection">
+				<button-save  name="posts" title="Submit Post"   > </button-save> 
+			</div>
+		</div>
+
+		<!-- existing comments of posts -->
+		<div ng-repeat="comment in comments track by $index" class="col-md-12">
+			<br>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<button-delete pk="{{comment.id}}" name="comments" array="comments"> </button-delete>
+					<strong> {{comment.name}}  </strong> <span class="text-muted">  ({{comment.email}})</span>
+				</div>
+				<div class="panel-body">
+					<span class="glyphicon glyphicon-comment"></span>
+					{{comment.body}}
+				</div> 
+			</div> 
+		</div>	
+
+		<!-- new comment  --> 
+		<div ng-if="showCommentReplySection">
+			<div  class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading"> 
+						<strong> {{comment.name}}  </strong> <span class="text-muted">  ({{comment.email}})</span>
+					</div>
+					<div class="panel-body">
+						<textarea class="col-sm-12 text-muted "   id="bodyId"  rows="2" type='text'  ng-model='comment.body'></textarea>
+					</div> 
+				</div>  
+				<div class="pull-right">
+					<button  id="post_save_id{{$index}}"   class="btn btn-success btn-xs"  
+							 ng-click="submitComment()">  <span class="glyphicon glyphicon-ok"></span>
+						Submit Comment  
+					</button>   
+				</div>
+			</div>
+		</div> 
+	</form> 
+</div>
+
+
+
+

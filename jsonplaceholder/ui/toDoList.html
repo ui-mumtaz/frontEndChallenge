@@ -1,0 +1,37 @@
+ <div class="container">
+	<form name="ToDoForm" class="form-horizontal"  novalidate>
+	<h2>Your Todos</h2> 
+		<div class="panel-group"> 
+			<div  class="panel panel-success">  
+				<div class="panel-heading"> 
+					<div class="panel-body">
+						<button  id="post_id{{$index}}"   class="btn btn-info btn-xs"  
+								ng-click='editToDo("new")'> 
+							Create Todo <span class="glyphicon glyphicon-plus"></span>
+						</button> 
+						<table class="table table-hover">
+							<thead>
+							<th> </th> 
+							<th> Number </th> 
+							<th>  Title </th> 
+							<th> Status </th>   
+							</thead> 
+							<tbody>   
+
+								<tr ng-repeat="todo in todos track by $index">  
+									<td> 
+									<button-delete pk="{{todo.id}}" name="todos" array="todos"> </button-delete>
+									   
+									</td>
+									<td> #{{$index+1}}</td>
+									<td> {{todo.title}} </td>
+									<td> {{todo.completed}}  </td> 
+								</tr> 
+							</tbody>  
+						</table>
+					</div>
+				</div> 
+			</div>
+		</div>
+	</form> 
+</div>

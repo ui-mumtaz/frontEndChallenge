@@ -1,0 +1,50 @@
+<div class="container">
+	<form name="AccountForm" class="form-horizontal"  novalidate>
+		<h2>Account Details </h2> 
+		<div class="panel-group">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h4 class="panel-title"> Your details </h4>
+				</div>
+				<div class="panel-body">
+					<label class="control-label"> Name </label> 
+					<div> 
+						<input id="nameId"  type='text' ng-model='editRecord.name'  /> 
+					</div> 
+					<label class="control-label">User name </label> 
+					<div> 
+						<input id="usernameId"  type='text' ng-model='editRecord.username'  /> 
+					</div>  
+					<label class="control-label"> Email </label> 
+					<div> 
+						<input id="emailId"  type='email' ng-model='editRecord.email'  /> 
+					</div>  
+					<label class="control-label"> Address </label> 
+					<div> 
+						<input id="emailId"  type='text' ng-model='editRecord.address.street'  /> 
+						<input id="emailId"  type='text' ng-model='editRecord.address.suite'  /> 
+						<input id="emailId"  type='text' ng-model='editRecord.address.city'  /> 
+						<input id="emailId"  type='text' ng-model='editRecord.address.zipcode'  />
+						<button class="btn btn-info" ng-click="openGIS()"> Open Map</button>
+					</div> 
+					<label class="control-label ">Phone </label> 
+					<div> 
+						<input id="phoneId"  type='email'   ng-model='editRecord.phone'/> 
+					</div> 
+
+					<label class="control-label"> Website </label> 
+					<div> 
+						<input id="websiteId"  type='email'   ng-model='editRecord.website'/> 
+					</div>  
+					<label class="control-label"> Company </label> 
+					<div> 
+						<input id="nameId" ng-readOnly="true"  type='text' ng-model='editRecord.company.name' /> 
+						<input id="catchPhraseId" ng-disabled="true" type='text' ng-model='editRecord.company.catchPhrase'/> 
+						<input id="bsId"  type='text' ng-model='editRecord.company.bs'  />   
+					</div>  
+					<br>  
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
